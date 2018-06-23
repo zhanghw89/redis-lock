@@ -19,12 +19,31 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!--指定java编译版本-->
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
                         <source>${java.level}</source>
                         <target>${java.level}</target>
                     </configuration>
+                </plugin>
+
+                <!--打jar包-->
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                        <finalName>up_pk</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
